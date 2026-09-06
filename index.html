@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dashboard Laporan Kantor">
+<title>Dashboard Laporan Kantor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-mark">📊</div>
+    <div>
+      <strong>Dashboard Laporan</strong>
+      <small>Pengelolaan Laporan Kantor</small>
+    </div>
+  </div>
+  <div class="sidebar-title">TAHUN LAPORAN</div>
+  <div id="yearContainer"></div>
+  <button class="add-year" id="addYearBtn">＋ Tambah Tahun</button>
+</aside>
+
+<main class="content">
+  <div class="mobile-header">
+    <button id="sidebarToggle" aria-label="Buka menu">☰</button>
+    <strong>Dashboard Laporan</strong>
+  </div>
+
+  <header class="topbar">
+    <div>
+      <span class="eyebrow">SISTEM PELAPORAN</span>
+      <h1>Dashboard Laporan Kantor</h1>
+      <p>Kelola tautan laporan berdasarkan tahun dan periode.</p>
+    </div>
+    <div class="date" id="currentDate"></div>
+  </header>
+
+  <section class="year-banner">
+    <div>
+      <span class="banner-label">TAHUN AKTIF</span>
+      <h2 id="yearTitle">Tahun 2026</h2>
+      <p>Pilih periode untuk melihat dokumen laporan.</p>
+    </div>
+    <div class="year-badge" id="yearBadge">2026</div>
+  </section>
+
+  <section class="period-cards" id="periodCards">
+    <button class="period-card active" data-period="mingguan">
+      <span class="period-icon">📅</span><span class="period-name">Mingguan</span><span class="period-desc">Laporan setiap minggu</span>
+    </button>
+    <button class="period-card" data-period="bulanan">
+      <span class="period-icon">📆</span><span class="period-name">Bulanan</span><span class="period-desc">Laporan setiap bulan</span>
+    </button>
+    <button class="period-card" data-period="3bulan">
+      <span class="period-icon">📊</span><span class="period-name">3 Bulan</span><span class="period-desc">Laporan triwulan</span>
+    </button>
+    <button class="period-card" data-period="6bulan">
+      <span class="period-icon">📈</span><span class="period-name">6 Bulan</span><span class="period-desc">Laporan semester</span>
+    </button>
+    <button class="period-card" data-period="12bulan">
+      <span class="period-icon">📋</span><span class="period-name">12 Bulan</span><span class="period-desc">Laporan tahunan</span>
+    </button>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <span class="section-kicker" id="periodKicker">PERIODE MINGGUAN</span>
+        <h2 id="periodTitle">Laporan Mingguan 2026</h2>
+      </div>
+      <button class="btn-add" id="addMenuBtn">＋ Tambah Menu</button>
+    </div>
+    <div class="menu-list" id="menuList"></div>
+  </section>
+
+  <footer>
+    <span>Dashboard Laporan Kantor</span>
+    <span>Data terpusat melalui Google Sheets</span>
+  </footer>
+</main>
+
+<div class="modal" id="yearModal">
+  <div class="modal-content">
+    <button class="modal-close" data-close="yearModal">×</button>
+    <h2>Tambah Tahun</h2>
+    <p class="modal-desc">Tambahkan tahun baru untuk membuat kelompok laporan baru.</p>
+    <label>Tahun</label>
+    <input type="number" id="yearInput" min="2000" max="2100" placeholder="Contoh: 2027">
+    <div class="modal-buttons">
+      <button class="btn-cancel" data-close="yearModal">Batal</button>
+      <button class="btn-save" id="saveYearBtn">Tambahkan Tahun</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="menuModal">
+  <div class="modal-content">
+    <button class="modal-close" data-close="menuModal">×</button>
+    <h2>Tambah Menu Laporan</h2>
+    <p class="modal-desc">Masukkan nama menu dan tautan Google Drive.</p>
+
+    <label>Tahun</label>
+    <select id="menuYear"></select>
+
+    <label>Periode</label>
+    <select id="periodInput">
+      <option value="mingguan">Mingguan</option>
+      <option value="bulanan">Bulanan</option>
+      <option value="3bulan">3 Bulan</option>
+      <option value="6bulan">6 Bulan</option>
+      <option value="12bulan">12 Bulan</option>
+    </select>
+
+    <label>Nama Menu</label>
+    <input type="text" id="nameInput" placeholder="Contoh: Laporan Intelijen Minggu I">
+
+    <label>Link Google Drive</label>
+    <input type="url" id="linkInput" placeholder="https://drive.google.com/...">
+
+    <div class="modal-buttons">
+      <button class="btn-cancel" data-close="menuModal">Batal</button>
+      <button class="btn-save" id="saveMenuBtn">Simpan Menu</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

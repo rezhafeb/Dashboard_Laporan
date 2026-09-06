@@ -1,110 +1,57 @@
-/* =================================================
-   KATEGORI LAPORAN
-================================================= */
-
-.period-card {
-    position: relative;
-    overflow: hidden;
+:root{
+  --primary:#0b2d4d;--primary2:#174f7c;--primary3:#27658f;
+  --gold:#c9a227;--bg:#f4f6f9;--white:#fff;--text:#1f2937;
+  --muted:#6b7280;--border:#e5e7eb;--danger:#dc3545;
+  --radius:14px;--shadow:0 5px 18px rgba(11,45,77,.07)
 }
-
-/* Garis warna bagian atas */
-
-.period-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 5px;
-
-    background: var(--primary);
-}
-
-
-/* MINGGUAN */
-
-.period-card:nth-child(1)::before {
-    background: #2563eb;
-}
-
-
-/* BULANAN */
-
-.period-card:nth-child(2)::before {
-    background: #16a34a;
-}
-
-
-/* 3 BULAN */
-
-.period-card:nth-child(3)::before {
-    background: #f59e0b;
-}
-
-
-/* 6 BULAN */
-
-.period-card:nth-child(4)::before {
-    background: #7c3aed;
-}
-
-
-/* 12 BULAN */
-
-.period-card:nth-child(5)::before {
-    background: #dc2626;
-}
-
-
-/* =================================================
-   JUDUL PERIODE
-================================================= */
-
-.period-card h3 {
-    font-weight: 700;
-
-    margin-bottom: 5px;
-}
-
-.period-card p {
-    line-height: 1.5;
-}
-
-
-/* =================================================
-   KARTU LAPORAN SESUAI PERIODE
-================================================= */
-
-.report-card {
-    position: relative;
-
-    border-left: 5px solid var(--primary);
-
-    transition: all .2s ease;
-}
-
-
-/* Warna kartu berdasarkan periode */
-
-body:has(.period-card:nth-child(1).active) .report-card {
-    border-left-color: #2563eb;
-}
-
-body:has(.period-card:nth-child(2).active) .report-card {
-    border-left-color: #16a34a;
-}
-
-body:has(.period-card:nth-child(3).active) .report-card {
-    border-left-color: #f59e0b;
-}
-
-body:has(.period-card:nth-child(4).active) .report-card {
-    border-left-color: #7c3aed;
-}
-
-body:has(.period-card:nth-child(5).active) .report-card {
-    border-left-color: #dc2626;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.sidebar{position:fixed;inset:0 auto 0 0;width:260px;background:var(--primary);color:#fff;padding:22px 16px;overflow-y:auto;z-index:1000}
+.brand{display:flex;gap:11px;align-items:center;padding:7px 8px 25px;border-bottom:1px solid rgba(255,255,255,.12)}
+.brand-mark{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.12);display:grid;place-items:center;font-size:22px}
+.brand strong{display:block;font-size:15px}.brand small{display:block;font-size:10px;color:rgba(255,255,255,.65);margin-top:3px}
+.sidebar-title{font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.55);margin:23px 8px 9px}
+.year-title{display:flex;justify-content:space-between;align-items:center;background:var(--primary2);padding:12px;border-radius:9px;margin-bottom:5px;color:#fff;font-weight:700}
+.year-title:hover{background:var(--primary3)}
+.year-menu{display:none;padding:3px 0 9px 7px}.year-menu.show{display:block}
+.year-menu button{width:100%;border:0;background:transparent;color:#fff;text-align:left;padding:9px 10px;border-radius:7px;font-size:12px}
+.year-menu button:hover,.year-menu button.active{background:var(--primary3)}
+.add-year{width:100%;margin-top:10px;padding:11px;border:1px dashed rgba(255,255,255,.45);border-radius:9px;background:transparent;color:#fff}
+.add-year:hover{background:var(--primary2)}
+.content{margin-left:260px;min-height:100vh;padding:25px;max-width:1500px}
+.mobile-header{display:none}
+.topbar{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:20px}
+.eyebrow,.section-kicker,.banner-label{font-size:10px;font-weight:700;letter-spacing:1.3px;color:var(--primary3)}
+.topbar h1{font-size:24px;color:var(--primary);margin:3px 0}
+.topbar p{font-size:13px;color:var(--muted)}
+.date{font-size:12px;color:var(--muted);white-space:nowrap}
+.year-banner{margin-top:18px;background:var(--primary);color:#fff;border-radius:var(--radius);padding:23px;display:flex;justify-content:space-between;align-items:center;position:relative;overflow:hidden}
+.year-banner:after{content:"";position:absolute;bottom:0;left:0;width:100%;height:4px;background:var(--gold)}
+.banner-label{color:rgba(255,255,255,.6)}.year-banner h2{font-size:24px}.year-banner p{font-size:12px;color:rgba(255,255,255,.72)}
+.year-badge{font-size:28px;font-weight:800;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:12px 18px;border-radius:12px}
+.period-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;margin:18px 0}
+.period-card{border:2px solid transparent;background:#fff;text-align:left;padding:17px;border-radius:var(--radius);box-shadow:var(--shadow);transition:.2s}
+.period-card:hover{transform:translateY(-2px);border-color:#b8c8d5}.period-card.active{border-color:var(--gold)}
+.period-icon{display:block;font-size:24px;margin-bottom:9px}.period-name{display:block;font-weight:700;color:var(--primary);font-size:14px}.period-desc{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+.section{background:#fff;padding:24px;border-radius:var(--radius);box-shadow:var(--shadow)}
+.section-header{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:20px}.section-header h2{font-size:19px;color:var(--primary);margin-top:2px}
+.btn-add,.btn-save{background:var(--primary);color:#fff;border:0;border-radius:8px;padding:10px 15px;font-size:12px}.btn-add:hover,.btn-save:hover{background:var(--primary3)}
+.menu-list{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.report-card{background:#fafbfc;border:1px solid var(--border);border-left:5px solid var(--primary3);border-radius:10px;padding:17px;transition:.2s}
+.report-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.report-icon{font-size:26px;margin-bottom:9px}.report-card h3{font-size:14px;color:var(--primary);margin-bottom:5px}.report-card p{font-size:11px;color:var(--muted);margin-bottom:14px}
+.btn-open{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;padding:8px 11px;border-radius:6px;font-size:11px}.btn-open:hover{background:var(--primary3)}
+.btn-delete{background:var(--danger);color:#fff;border:0;padding:8px 10px;border-radius:6px;font-size:11px;margin-left:5px}
+.empty{grid-column:1/-1;text-align:center;padding:45px 20px;border:1px dashed var(--border);border-radius:10px;color:var(--muted);font-size:13px}
+footer{display:flex;justify-content:space-between;padding:18px 3px;color:#8b95a1;font-size:10px}
+.modal{display:none;position:fixed;inset:0;background:rgba(7,24,38,.58);z-index:2000;align-items:center;justify-content:center;padding:20px}
+.modal-content{position:relative;background:#fff;width:100%;max-width:500px;border-radius:14px;padding:25px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.modal-close{position:absolute;right:15px;top:11px;border:0;background:transparent;font-size:27px;color:#8b95a1}.modal-content h2{color:var(--primary);font-size:20px}.modal-desc{font-size:12px;color:var(--muted);margin:4px 0 20px}
+.modal-content label{display:block;font-size:12px;font-weight:700;margin:13px 0 6px}.modal-content input,.modal-content select{width:100%;padding:11px;border:1px solid #d1d7de;border-radius:7px;outline:0;background:#fff}.modal-content input:focus,.modal-content select:focus{border-color:var(--primary3);box-shadow:0 0 0 3px rgba(39,101,143,.1)}
+.modal-buttons{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}.btn-cancel{border:0;background:#e9edf1;color:var(--text);padding:10px 15px;border-radius:7px}
+.toast{position:fixed;right:22px;bottom:22px;background:var(--primary);color:#fff;padding:12px 16px;border-radius:8px;font-size:12px;box-shadow:0 8px 20px rgba(0,0,0,.15);display:none;z-index:3000}
+@media(max-width:1100px){.period-cards{grid-template-columns:repeat(3,1fr)}.menu-list{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.sidebar{left:-260px;transition:.25s}.sidebar.show{left:0}.content{margin-left:0;padding:14px}.mobile-header{display:flex;align-items:center;background:var(--primary);color:#fff;padding:13px 15px;border-radius:9px;margin-bottom:14px}.mobile-header button{border:0;background:transparent;color:#fff;font-size:22px;margin-right:12px}.topbar{padding:18px;display:block}.topbar h1{font-size:20px}.date{margin-top:9px}.year-banner{padding:19px}.year-banner h2{font-size:21px}.year-badge{font-size:21px;padding:10px 13px}.period-cards{grid-template-columns:repeat(2,1fr)}.menu-list{grid-template-columns:1fr}.section{padding:18px}.section-header{align-items:flex-start}.section-header h2{font-size:16px}}
+@media(max-width:450px){.period-cards{grid-template-columns:1fr}.section-header{flex-direction:column}.btn-add{width:100%}.year-badge{display:none}footer{display:block}.date{white-space:normal}}
