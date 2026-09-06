@@ -1,857 +1,110 @@
-/* =========================================================
-   DASHBOARD LAPORAN - CUSTOM CSS
-   File: style.css
-
-   Cara penggunaan:
-   1. Simpan file ini di folder yang sama dengan index.html
-   2. Di index.html, hapus blok <style>...</style>
-      atau pindahkan CSS lama ke file ini.
-   3. Tambahkan di dalam <head>:
-      <link rel="stylesheet" href="style.css">
-   ========================================================= */
-
-
-/* =========================
-   1. WARNA DASAR
-   ========================= */
-
-:root {
-    --primary: #0b2d4d;
-    --primary-light: #174f7c;
-    --primary-hover: #27658f;
-
-    --accent: #c9a227;
-
-    --background: #f4f6f9;
-    --surface: #ffffff;
-    --surface-soft: #f8fafc;
-
-    --text: #1f2937;
-    --text-muted: #6b7280;
-
-    --border: #e5e7eb;
-
-    --success: #198754;
-    --danger: #dc3545;
-
-    --radius: 12px;
-    --shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-}
-
-
-/* =========================
-   2. RESET
-   ========================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: var(--background);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-}
-
-
-/* =========================
-   3. SIDEBAR
-   ========================= */
-
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-
-    width: 250px;
-    height: 100vh;
-
-    background: var(--primary);
-    color: white;
-
-    padding: 25px 15px;
-
-    overflow-y: auto;
-
-    z-index: 1000;
-
-    transition: all 0.3s ease;
-}
-
-
-/* Logo */
-
-.logo {
-    text-align: center;
-    padding: 10px 5px 25px;
-}
-
-.logo h2 {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.logo p {
-    margin-top: 5px;
-
-    font-size: 12px;
-    color: rgba(255,255,255,0.7);
-}
-
-
-/* =========================
-   4. TAHUN
-   ========================= */
-
-.year-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 12px;
-
-    background: var(--primary-light);
-
-    border-radius: 8px;
-
-    margin-bottom: 5px;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.year-title:hover {
-    background: var(--primary-hover);
-}
-
-.year-menu {
-    display: none;
-
-    padding-left: 8px;
-
-    margin-bottom: 10px;
-}
-
-.year-menu.show {
-    display: block;
-}
-
-.year-menu button {
-    width: 100%;
-
-    background: transparent;
-
-    border: none;
-
-    color: white;
-
-    padding: 10px;
-
-    text-align: left;
-
-    border-radius: 6px;
-
-    cursor: pointer;
-
-    font-size: 13px;
-
-    transition: 0.2s;
-}
-
-.year-menu button:hover,
-.year-menu button.active {
-    background: var(--primary-hover);
-}
-
-
-/* Tambah Tahun */
-
-.add-year {
-    width: 100%;
-
-    margin-top: 10px;
-
-    padding: 11px;
-
-    border: 1px dashed rgba(255,255,255,0.5);
-
-    background: transparent;
-
-    color: white;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.add-year:hover {
-    background: var(--primary-light);
-}
-
-
-/* =========================
-   5. KONTEN UTAMA
-   ========================= */
-
-.content {
-    margin-left: 250px;
-
-    min-height: 100vh;
-
-    padding: 25px;
-
-    transition: 0.3s;
-}
-
-
-/* =========================
-   6. TOPBAR
-   ========================= */
-
-.topbar {
-    background: var(--surface);
-
-    padding: 20px;
-
-    border-radius: var(--radius);
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 20px;
-
-    box-shadow: var(--shadow);
-}
-
-.topbar h1 {
-    color: var(--primary);
-
-    font-size: 22px;
-}
-
-.date {
-    color: var(--text-muted);
-
-    font-size: 13px;
-}
-
-
-/* =========================
-   7. HEADER TAHUN
-   ========================= */
-
-.year-header {
-    background: var(--primary);
-
-    color: white;
-
-    padding: 22px;
-
-    border-radius: var(--radius);
-
-    margin-bottom: 20px;
-
+/* =================================================
+   KATEGORI LAPORAN
+================================================= */
+
+.period-card {
     position: relative;
-
     overflow: hidden;
 }
 
+/* Garis warna bagian atas */
 
-/* Garis emas */
-
-.year-header::after {
+.period-card::before {
     content: "";
 
     position: absolute;
 
+    top: 0;
     left: 0;
-    bottom: 0;
 
     width: 100%;
-    height: 4px;
+    height: 5px;
 
-    background: var(--accent);
-}
-
-.year-header h2 {
-    font-size: 24px;
-}
-
-.year-header p {
-    margin-top: 5px;
-
-    font-size: 13px;
-
-    opacity: 0.8;
+    background: var(--primary);
 }
 
 
-/* =========================
-   8. KARTU PERIODE
-   ========================= */
+/* MINGGUAN */
 
-.period-cards {
-    display: grid;
-
-    grid-template-columns: repeat(5, 1fr);
-
-    gap: 15px;
-
-    margin-bottom: 20px;
+.period-card:nth-child(1)::before {
+    background: #2563eb;
 }
 
-.period-card {
-    background: var(--surface);
 
-    padding: 20px;
+/* BULANAN */
 
-    border-radius: var(--radius);
-
-    cursor: pointer;
-
-    border: 2px solid transparent;
-
-    box-shadow: var(--shadow);
-
-    transition: all 0.2s ease;
+.period-card:nth-child(2)::before {
+    background: #16a34a;
 }
 
-.period-card:hover {
-    transform: translateY(-2px);
 
-    border-color: var(--primary-light);
+/* 3 BULAN */
+
+.period-card:nth-child(3)::before {
+    background: #f59e0b;
 }
 
-.period-card.active {
-    border-color: var(--accent);
+
+/* 6 BULAN */
+
+.period-card:nth-child(4)::before {
+    background: #7c3aed;
 }
 
-.period-icon {
-    font-size: 25px;
 
-    margin-bottom: 10px;
+/* 12 BULAN */
+
+.period-card:nth-child(5)::before {
+    background: #dc2626;
 }
+
+
+/* =================================================
+   JUDUL PERIODE
+================================================= */
 
 .period-card h3 {
-    font-size: 15px;
+    font-weight: 700;
 
-    color: var(--primary);
+    margin-bottom: 5px;
 }
 
 .period-card p {
-    font-size: 12px;
-
-    color: var(--text-muted);
-
-    margin-top: 5px;
+    line-height: 1.5;
 }
 
 
-/* =========================
-   9. SECTION LAPORAN
-   ========================= */
-
-.section {
-    background: var(--surface);
-
-    padding: 25px;
-
-    border-radius: var(--radius);
-
-    box-shadow: var(--shadow);
-}
-
-.section-header {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 20px;
-}
-
-.section-header h2 {
-    color: var(--primary);
-
-    font-size: 19px;
-}
-
-
-/* =========================
-   10. TOMBOL TAMBAH
-   ========================= */
-
-.btn-add {
-    background: var(--primary);
-
-    color: white;
-
-    border: none;
-
-    padding: 11px 16px;
-
-    border-radius: 7px;
-
-    cursor: pointer;
-
-    font-size: 13px;
-
-    transition: 0.2s;
-}
-
-.btn-add:hover {
-    background: var(--primary-light);
-}
-
-
-/* =========================
-   11. GRID MENU
-   ========================= */
-
-.menu-list {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 15px;
-}
-
-
-/* =========================
-   12. KARTU LAPORAN
-   ========================= */
+/* =================================================
+   KARTU LAPORAN SESUAI PERIODE
+================================================= */
 
 .report-card {
-    border: 1px solid var(--border);
+    position: relative;
 
-    border-radius: 10px;
+    border-left: 5px solid var(--primary);
 
-    padding: 18px;
-
-    background: var(--surface-soft);
-
-    transition: all 0.2s ease;
-}
-
-.report-card:hover {
-    transform: translateY(-2px);
-
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-
-    border-color: #d5dce3;
-}
-
-.report-icon {
-    font-size: 28px;
-
-    margin-bottom: 10px;
-}
-
-.report-card h3 {
-    color: var(--primary);
-
-    font-size: 15px;
-
-    margin-bottom: 7px;
-}
-
-.report-card p {
-    color: var(--text-muted);
-
-    font-size: 12px;
-
-    margin-bottom: 15px;
+    transition: all .2s ease;
 }
 
 
-/* =========================
-   13. TOMBOL BUKA
-   ========================= */
+/* Warna kartu berdasarkan periode */
 
-.btn-open {
-    display: inline-block;
-
-    background: var(--primary);
-
-    color: white;
-
-    text-decoration: none;
-
-    padding: 8px 12px;
-
-    border-radius: 6px;
-
-    font-size: 12px;
-
-    transition: 0.2s;
+body:has(.period-card:nth-child(1).active) .report-card {
+    border-left-color: #2563eb;
 }
 
-.btn-open:hover {
-    background: var(--primary-light);
+body:has(.period-card:nth-child(2).active) .report-card {
+    border-left-color: #16a34a;
 }
 
-
-/* =========================
-   14. TOMBOL HAPUS
-   ========================= */
-
-.btn-delete {
-    background: var(--danger);
-
-    color: white;
-
-    border: none;
-
-    padding: 8px 10px;
-
-    border-radius: 6px;
-
-    cursor: pointer;
-
-    font-size: 12px;
-
-    margin-left: 5px;
-
-    transition: 0.2s;
+body:has(.period-card:nth-child(3).active) .report-card {
+    border-left-color: #f59e0b;
 }
 
-.btn-delete:hover {
-    opacity: 0.85;
+body:has(.period-card:nth-child(4).active) .report-card {
+    border-left-color: #7c3aed;
 }
 
-
-/* =========================
-   15. MODAL
-   ========================= */
-
-.modal {
-    display: none;
-
-    position: fixed;
-
-    z-index: 2000;
-
-    inset: 0;
-
-    background: rgba(0,0,0,0.55);
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 20px;
-
-    backdrop-filter: blur(2px);
-}
-
-.modal-content {
-    background: var(--surface);
-
-    padding: 25px;
-
-    border-radius: var(--radius);
-
-    width: 100%;
-
-    max-width: 500px;
-
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-
-    animation: modalIn 0.2s ease;
-}
-
-@keyframes modalIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-.modal-content h2 {
-    color: var(--primary);
-
-    margin-bottom: 20px;
-
-    font-size: 20px;
-}
-
-
-/* =========================
-   16. FORM
-   ========================= */
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    color: var(--text);
-
-    margin-bottom: 6px;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-
-    padding: 11px;
-
-    border: 1px solid #d1d5db;
-
-    border-radius: 7px;
-
-    background: white;
-
-    outline: none;
-
-    font-size: 14px;
-
-    transition: 0.2s;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    border-color: var(--primary-light);
-
-    box-shadow: 0 0 0 3px rgba(11,92,142,0.1);
-}
-
-
-/* =========================
-   17. MODAL BUTTON
-   ========================= */
-
-.modal-buttons {
-    display: flex;
-
-    justify-content: flex-end;
-
-    gap: 10px;
-
-    margin-top: 20px;
-}
-
-.btn-cancel {
-    border: none;
-
-    background: #e5e7eb;
-
-    color: var(--text);
-
-    padding: 10px 15px;
-
-    border-radius: 7px;
-
-    cursor: pointer;
-}
-
-.btn-cancel:hover {
-    background: #d1d5db;
-}
-
-.btn-save {
-    border: none;
-
-    background: var(--primary);
-
-    color: white;
-
-    padding: 10px 15px;
-
-    border-radius: 7px;
-
-    cursor: pointer;
-}
-
-.btn-save:hover {
-    background: var(--primary-light);
-}
-
-
-/* =========================
-   18. MOBILE HEADER
-   ========================= */
-
-.mobile-header {
-    display: none;
-}
-
-
-/* =========================
-   19. SCROLLBAR
-   ========================= */
-
-.sidebar::-webkit-scrollbar {
-    width: 5px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.25);
-
-    border-radius: 10px;
-}
-
-
-/* =========================
-   20. TABLET
-   ========================= */
-
-@media(max-width:1100px) {
-
-    .period-cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .menu-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-
-/* =========================
-   21. MOBILE
-   ========================= */
-
-@media(max-width:700px) {
-
-    .sidebar {
-        left: -250px;
-    }
-
-    .sidebar.show {
-        left: 0;
-    }
-
-    .content {
-        margin-left: 0;
-
-        padding: 15px;
-    }
-
-    .mobile-header {
-        display: flex;
-
-        align-items: center;
-
-        background: var(--primary);
-
-        color: white;
-
-        padding: 15px;
-
-        border-radius: 8px;
-
-        margin-bottom: 15px;
-    }
-
-    .mobile-header button {
-        background: none;
-
-        border: none;
-
-        color: white;
-
-        font-size: 22px;
-
-        margin-right: 15px;
-
-        cursor: pointer;
-    }
-
-    .topbar {
-        padding: 17px;
-    }
-
-    .topbar h1 {
-        font-size: 19px;
-    }
-
-    .date {
-        margin-top: 8px;
-    }
-
-    .period-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .menu-list {
-        grid-template-columns: 1fr;
-    }
-
-    .section {
-        padding: 18px;
-    }
-
-    .section-header {
-        align-items: flex-start;
-    }
-
-}
-
-
-/* =========================
-   22. HP KECIL
-   ========================= */
-
-@media(max-width:450px) {
-
-    .period-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .period-card {
-        padding: 16px;
-    }
-
-    .year-header h2 {
-        font-size: 21px;
-    }
-
-    .section-header {
-        flex-direction: column;
-    }
-
-    .btn-add {
-        width: 100%;
-    }
-
-    .modal-content {
-        padding: 20px;
-    }
-
+body:has(.period-card:nth-child(5).active) .report-card {
+    border-left-color: #dc2626;
 }
