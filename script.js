@@ -3,7 +3,7 @@
   Backend: Google Apps Script Web App
   Isi API_URL setelah deploy Code.gs.
 */
-const API_URL = ""; // contoh: https://script.google.com/macros/s/XXXXXXXX/exec
+const API_URL = "https://script.google.com/macros/s/AKfycbzxL4jC9IsHNOPEwYnESdfIslHfrAepckWpH0BVvoP4qDbfYkgvGw4LRXkEOFOgXVziHw/exec"; // contoh: https://script.google.com/macros/s/XXXXXXXX/exec
 
 const PERIODS = {
   mingguan: "Mingguan",
