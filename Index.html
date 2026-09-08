@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?!= include('CSS'); ?>
+</head>
+<body>
+<div id="sidebar" class="sidebar">
+  <div class="brand">
+    <div class="brand-icon">📊</div>
+    <div><strong>MONITORING</strong><span>LAPORAN</span></div>
+  </div>
+  <nav>
+    <button class="menu active" onclick="showDashboard()">🏠 <span>Dashboard</span></button>
+    <button class="menu" onclick="showKategori('Bulanan')">📅 <span>Laporan Bulanan</span></button>
+    <button class="menu" onclick="showKategori('Triwulan')">📈 <span>Laporan Triwulan</span></button>
+    <button class="menu" onclick="showKategori('Semester')">📋 <span>Laporan Semester</span></button>
+    <button class="menu" onclick="showKategori('Tahunan')">🗂️ <span>Laporan Tahunan</span></button>
+    <button class="menu" onclick="showKategori('Lainnya')">📁 <span>Laporan Lainnya</span></button>
+  </nav>
+</div>
+
+<div class="main">
+  <header class="topbar">
+    <button class="hamburger" onclick="toggleSidebar()">☰</button>
+    <div><h1 id="pageTitle">Dashboard Monitoring Laporan</h1><p id="pageSubtitle">Pantau kelengkapan laporan secara terpusat.</p></div>
+    <div class="year-box"><label>Tahun</label><select id="globalYear" onchange="changeYear()"></select></div>
+  </header>
+  <main id="content"><div class="loading">Memuat data...</div></main>
+</div>
+
+<div id="modalOverlay" class="overlay" onclick="closeModal(event)">
+  <div id="modal" class="modal" onclick="event.stopPropagation()"></div>
+</div>
+<div id="toast" class="toast"></div>
+<div id="spinner" class="spinner">Memproses...</div>
+
+<?!= include('JS'); ?>
+</body>
+</html>
