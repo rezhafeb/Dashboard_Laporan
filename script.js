@@ -1,4 +1,4 @@
-const API_URL="";const P={BULANAN:["Laporan Bulanan","📅"],TRIWULAN:["Laporan Triwulan","📈"],SEMESTER:["Laporan Semester","📚"],TAHUNAN:["Laporan Tahunan","📊"],LAINNYA:["Laporan Lainnya","📁"]};let years=[2026],data=[],year=2026,period="BULANAN";
+const API_URL="https://script.google.com/macros/s/AKfycbzxL4jC9IsHNOPEwYnESdfIslHfrAepckWpH0BVvoP4qDbfYkgvGw4LRXkEOFOgXVziHw/exec";const P={BULANAN:["Laporan Bulanan","📅"],TRIWULAN:["Laporan Triwulan","📈"],SEMESTER:["Laporan Semester","📚"],TAHUNAN:["Laporan Tahunan","📊"],LAINNYA:["Laporan Lainnya","📁"]};let years=[2026],data=[],year=2026,period="BULANAN";
 addEventListener("DOMContentLoaded",init);
 async function init(){if(API_URL){try{let r=await api("getData");years=r.years||[2026];data=r.data||[]}catch(e){msg("Gagal mengambil database")}}else load();year=years.includes(2026)?2026:years[0];render()}
 function setPeriodView(p){period=p;document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.period==p));render()}
